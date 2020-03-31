@@ -8,6 +8,41 @@ which has no flat charge, but the rate based on weight is triple the rate of gro
 
 """
 
-def cost_of_ground_shipping(weight):
 
+def ground_shipping(weight):
+    cost = (weight * 4.00) + 20
     return cost
+
+
+premium_ground_shipping = 125
+
+
+def drone_ground_shipping(weight):
+    cost = weight * 4.50
+    return cost
+
+
+def comparison(weight):
+    if (ground_shipping(weight) < premium_ground_shipping) and (
+            ground_shipping(weight) < drone_ground_shipping(weight)):
+        return "Ground Shipping Method is Cheapest"
+    elif (premium_ground_shipping < ground_shipping(weight)) and (
+            premium_ground_shipping < drone_ground_shipping(weight)):
+        return "Premium ground shipping is cheapest"
+    else:
+        return "Drone Ground Shipping is the best"
+
+
+x = 41.5
+best_shipper = comparison(x)
+print(best_shipper)
+
+print("")
+ground_shipping_cost = ground_shipping(x)
+print("Ground Shipping cost is: " + str(ground_shipping_cost) + "$")
+
+drone_ground_cost = drone_ground_shipping(x)
+print("Drone Shipping cost is: " + str(drone_ground_cost) + "$")
+
+print("Premium Shipping cost is: " + str(premium_ground_shipping) + "$")
+
